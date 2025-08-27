@@ -55,9 +55,12 @@ function Sidebar() {
         closed: { width: "4rem", transition: { damping: 40 } },
       };
 
-  useEffect(() => {
-    isTab && setIsOpen(false);
-  }, [pathname]);
+ useEffect(() => {
+  if (isTab) {
+    setIsOpen(false);
+  }
+}, [pathname, isTab]);  // ✅ added isTab
+
 
   useEffect(() => {
     if (isTab) {

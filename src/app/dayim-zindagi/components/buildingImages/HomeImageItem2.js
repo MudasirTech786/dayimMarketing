@@ -3,22 +3,16 @@
 import { GET_ALL_PROPERTIES_API } from "@/lib/apiEndPoints";
 import React from "react";
 import useSWR from "swr";
+import Image from "next/image";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const HomeImageItem2 = () => {
   const { data, error, isLoading } = useSWR(GET_ALL_PROPERTIES_API, fetcher);
-
-  // state for hover tracking
   const [hovered, setHovered] = React.useState(null);
 
-  // loading & error placeholders
-  if (isLoading) {
-    return <h2 className="text-center p-10">Loading...</h2>;
-  }
-  if (error) {
-    return <h2 className="text-center p-10 text-red-500">Failed to load</h2>;
-  }
+  if (isLoading) return <h2 className="text-center p-10">Loading...</h2>;
+  if (error) return <h2 className="text-center p-10 text-red-500">Failed to load</h2>;
 
   const residences = data?.filter((item) => item.name === "DSA") || [];
 
@@ -28,96 +22,53 @@ const HomeImageItem2 = () => {
     ).length;
   }
 
-  const lowerGroundFloorAvailable = getAvailableResidencesByFloor("Lower Ground");
-  const groundFloorAvailable = getAvailableResidencesByFloor("Ground");
-  const firstFloorAvailable = getAvailableResidencesByFloor("1st");
-  const secondFloorAvailable = getAvailableResidencesByFloor("2nd");
-  const thirdFloorAvailable = getAvailableResidencesByFloor("3rd");
-  const fourthFloorAvailable = getAvailableResidencesByFloor("4th");
-  const fifthFloorAvailable = getAvailableResidencesByFloor("5th");
-  const sixthFloorAvailable = getAvailableResidencesByFloor("6th");
+  // ✅ Define floors dynamically (easier to manage)
+  const floors = [
+    { key: "sixth", label: "6th", top: "16%" },
+    { key: "fifth", label: "5th", top: "25%" },
+    { key: "fourth", label: "4th", top: "35%" },
+    { key: "third", label: "3rd", top: "45%" },
+    { key: "second", label: "2nd", top: "55%" },
+    { key: "first", label: "1st", top: "65%" },
+    { key: "ground", label: "Ground", top: "75%" },
+    { key: "lowerGround", label: "Lower Ground", top: "85%" }, // extra
+  ];
 
   return (
     <div className="relative inline-block">
-      {/* Background image */}
-      <img
+      {/* ✅ Optimized Next.js Image */}
+      <Image
         src="/images/dsa/building_bg5.png"
         alt="Building Floors"
-        className="rounded-3xl"
+        width={800}
+        height={1200}
+        className="rounded-3xl w-full h-auto"
+        priority
       />
 
       {/* Transparent clickable areas */}
-      <div
-        className="absolute left-[32%] top-[16%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("sixth")}
-        onMouseLeave={() => setHovered(null)}
-      />
-      <div
-        className="absolute left-[32%] top-[25%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("fifth")}
-        onMouseLeave={() => setHovered(null)}
-      />
-      <div
-        className="absolute left-[32%] top-[35%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("fourth")}
-        onMouseLeave={() => setHovered(null)}
-      />
-      <div
-        className="absolute left-[32%] top-[45%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("third")}
-        onMouseLeave={() => setHovered(null)}
-      />
-      <div
-        className="absolute left-[32%] top-[55%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("second")}
-        onMouseLeave={() => setHovered(null)}
-      />
-      <div
-        className="absolute left-[32%] top-[65%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("first")}
-        onMouseLeave={() => setHovered(null)}
-      />
-      <div
-        className="absolute left-[32%] top-[75%] w-[35%] h-[6%] cursor-pointer"
-        onMouseEnter={() => setHovered("ground")}
-        onMouseLeave={() => setHovered(null)}
-      />
+      {floors.map((floor) => (
+        <div
+          key={floor.key}
+          className="absolute left-[32%] w-[35%] h-[6%] cursor-pointer"
+          style={{ top: floor.top }}
+          onMouseEnter={() => setHovered(floor.key)}
+          onMouseLeave={() => setHovered(null)}
+        />
+      ))}
 
-      {/* Highlight labels */}
-      {hovered === "sixth" && (
-        <div className="absolute top-[16%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {sixthFloorAvailable}
-        </div>
-      )}
-      {hovered === "fifth" && (
-        <div className="absolute top-[25%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {fifthFloorAvailable}
-        </div>
-      )}
-      {hovered === "fourth" && (
-        <div className="absolute top-[35%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {fourthFloorAvailable}
-        </div>
-      )}
-      {hovered === "third" && (
-        <div className="absolute top-[45%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {thirdFloorAvailable}
-        </div>
-      )}
-      {hovered === "second" && (
-        <div className="absolute top-[55%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {secondFloorAvailable}
-        </div>
-      )}
-      {hovered === "first" && (
-        <div className="absolute top-[65%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {firstFloorAvailable}
-        </div>
-      )}
-      {hovered === "ground" && (
-        <div className="absolute top-[75%] right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-          Available - {groundFloorAvailable}
-        </div>
+      {/* Hover Highlight Labels */}
+      {floors.map(
+        (floor) =>
+          hovered === floor.key && (
+            <div
+              key={`highlight-${floor.key}`}
+              className="absolute right-[15%] bg-third w-[200px] h-[60px] rounded-2xl flex items-center justify-center text-white font-bold text-xl"
+              style={{ top: floor.top }}
+            >
+              Available - {getAvailableResidencesByFloor(floor.label)}
+            </div>
+          )
       )}
     </div>
   );
