@@ -3,7 +3,7 @@ import MainFooter from "@/app/dayim-signature-apartments/components/footer/MainF
 import NavBar from "@/app/dayim-signature-apartments/components/Navbar";
 import Link from "next/link";
 import LoginForm from "./LoginForm";
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -14,13 +14,14 @@ const LoginPage = () => {
   useEffect(() => {
     const user = getCookie("logged-in-user");
     if (user) {
-      if (searchParams.get("name") == "dsa") {
+      if (searchParams.get("name") === "dsa") {
         router.push("/dayim-signature-apartments/residences");
       } else {
         router.push("/dayim-living/residences");
       }
     }
-  }, []);
+  }, [router, searchParams]); // ✅ added dependencies
+
   return (
     <div className="min-h-screen w-full ">
       <NavBar videoBg={false} />
@@ -37,7 +38,6 @@ const LoginPage = () => {
               Register
             </Link>{" "}
           </p>
-          {/* <DevTool control={control} /> */}
         </div>
       </div>
 

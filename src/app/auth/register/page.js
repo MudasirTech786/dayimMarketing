@@ -10,12 +10,14 @@ import { getCookie } from "cookies-next";
 
 const RegisterPage = ({ authProviders }) => {
   const router = useRouter();
+
   useEffect(() => {
     const user = getCookie("logged-in-user");
     if (user) {
       router.push("/dayim-signature-apartments/residences2");
     }
-  }, []);
+  }, [router]); // ✅ added router to dependencies
+
   return (
     <div className="min-h-screen w-full ">
       <NavBar videoBg={false} />
@@ -35,7 +37,6 @@ const RegisterPage = ({ authProviders }) => {
               Login
             </Link>{" "}
           </p>
-          {/* <DevTool control={control} /> */}
         </div>
       </div>
 
