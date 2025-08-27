@@ -348,7 +348,7 @@ function Home() {
                 className="rounded-[28px] overflow-hidden relative"
               >
                 <Image
-                  src="/images/dsa/elevation-side-view_zindagi.JPG"
+                  src="/images/dsa/elevation-side-view_zindagi.jpg"
                   alt="Dayim Zindagi"
                   width={800}   // ✅ must provide width
                   height={700}  // ✅ must provide height
