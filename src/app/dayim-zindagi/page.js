@@ -414,22 +414,22 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
-                image: "/images/dsa/zindagi4.JPG",
+                image: "/images/dsa/zindagi4.jpg",
                 title: "Reliable Construction",
                 desc: "You’ve seen what we’ve delivered before — this is the next level.",
               },
               {
-                image: "/images/dsa/zindagi4.JPG",
+                image: "/images/dsa/zindagi4.jpg",
                 title: "On-Ground Progress",
                 desc: "Construction begins the moment we go live — no waiting, no delays.",
               },
               {
-                image: "/images/dsa/zindagi4.JPG",
+                image: "/images/dsa/zindagi4.jpg",
                 title: "High ROI Potential",
                 desc: "Ideal for investors, entrepreneurs, and first-time buyers.",
               },
               {
-                image: "/images/dsa/zindagi4.JPG",
+                image: "/images/dsa/zindagi4.jpg",
                 title: "Client-First Approach",
                 desc: "Transparent processes, regular updates, and no hidden charges.",
               },
