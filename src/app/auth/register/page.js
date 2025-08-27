@@ -1,7 +1,7 @@
 "use client";
 
-import MainFooter from "@/app/dayim-signature-apartments/components/footer/MainFooter";
-import NavBar from "@/app/dayim-signature-apartments/components/Navbar";
+import MainFooter from "@/app/dayim-zindagi/components/footer/MainFooter";
+import NavBar from "@/app/dayim-zindagi/components/Navbar";
 import Link from "next/link";
 import RegisterForm from "./RegisterForm";
 import { useEffect } from "react";
@@ -14,7 +14,7 @@ const RegisterPage = ({ authProviders }) => {
   useEffect(() => {
     const user = getCookie("logged-in-user");
     if (user) {
-      router.push("/dayim-signature-apartments/residences2");
+      router.push("/dayim-zindagi/residences2");
     }
   }, [router]); // ✅ added router to dependencies
 

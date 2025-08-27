@@ -14,7 +14,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import Link from "next/link";
-import residence_types from "@/app/dayim-signature-apartments/vr/Data";
+
 import Image from "next/image";
 
 export default function VRSLider1() {
@@ -73,29 +73,7 @@ export default function VRSLider1() {
             // "--swiper-pagination-top": "-10px",
           }}
         >
-          {residence_types.map((item) => (
-            <SwiperSlide key={item.id}>
-              <div className=" mx-auto h-[90%] md:h-[80%]  lg:h-[60%] w-full flex flex-col items-center justify-center">
-                <img
-                  src="/images/dsa/vr-icon.svg"
-                  className="absolute  object-contain h-[30px]  "
-                />
-                <Link
-                  href={item.link}
-                  className="inline-block h-full w-full relative"
-                >
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-[100%] h-[100%] object-cover"
-                  />
-                </Link>
-                <h3 className="text-center text-white text-lg font-bold mt-5">
-                  {item.title}
-                </h3>
-              </div>
-            </SwiperSlide>
-          ))}
+         
         </Swiper>
       </div>
     </div>

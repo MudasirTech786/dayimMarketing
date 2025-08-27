@@ -1,6 +1,6 @@
 "use client";
-import MainFooter from "@/app/dayim-signature-apartments/components/footer/MainFooter";
-import NavBar from "@/app/dayim-signature-apartments/components/Navbar";
+import MainFooter from "@/app/dayim-zindagi/components/footer/MainFooter";
+import NavBar from "@/app/dayim-zindagi/components/Navbar";
 import Link from "next/link";
 import LoginForm from "./LoginForm";
 import { getCookie } from "cookies-next";
@@ -15,7 +15,7 @@ const LoginPage = () => {
     const user = getCookie("logged-in-user");
     if (user) {
       if (searchParams.get("name") === "dsa") {
-        router.push("/dayim-signature-apartments/residences");
+        router.push("/dayim-zindagi/residences");
       } else {
         router.push("/dayim-living/residences");
       }
