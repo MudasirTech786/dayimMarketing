@@ -4,6 +4,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 function Residences_item({
   id,
@@ -23,9 +24,11 @@ function Residences_item({
   return (
     <div className=" p-5 flex flex-col items-center justify-center  border border-second relative">
       <Zoom>
-        <img
+        <Image
           src={image}
           alt=""
+          width={150}
+          height={200}
           className="h-[200px] w-[150px] object-contain"
         />
       </Zoom>

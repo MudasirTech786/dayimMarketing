@@ -43,13 +43,17 @@ function Footer1() {
                 width={180}
                 alt="Dayim Developer Logo"
                 className="rounded-full"
+                priority
               />
             </div>
           </div>
 
           {/* Description */}
           <p className="max-w-3xl text-center text-gray-700 text-xl leading-relaxed">
-            <Link href="/" className="text-[#d6ad42] font-semibold hover:underline">
+            <Link
+              href="/"
+              className="text-[#d6ad42] font-semibold hover:underline"
+            >
               DAYIM DEVELOPER
             </Link>{" "}
             unites visionary architects, engineers, and innovators with one goal:
@@ -60,11 +64,26 @@ function Footer1() {
           {/* Social Icons */}
           <div className="flex flex-wrap justify-center gap-6 mt-10">
             {[
-              { href: "https://www.facebook.com/dayimmarketing/", icon: <FaFacebookF /> },
-              { href: "https://www.instagram.com/Dayimmarketing/", icon: <FaInstagram /> },
-              { href: "https://www.youtube.com/c/DayimMarketing", icon: <AiFillYoutube /> },
-              { href: "https://www.twitter.com/Dayimmarketing", icon: <FaTwitter /> },
-              { href: "https://api.whatsapp.com/send?phone=923085111176", icon: <FaWhatsapp /> },
+              {
+                href: "https://www.facebook.com/dayimmarketing/",
+                icon: <FaFacebookF />,
+              },
+              {
+                href: "https://www.instagram.com/Dayimmarketing/",
+                icon: <FaInstagram />,
+              },
+              {
+                href: "https://www.youtube.com/c/DayimMarketing",
+                icon: <AiFillYoutube />,
+              },
+              {
+                href: "https://www.twitter.com/Dayimmarketing",
+                icon: <FaTwitter />,
+              },
+              {
+                href: "https://api.whatsapp.com/send?phone=923085111176",
+                icon: <FaWhatsapp />,
+              },
             ].map((item, i) => (
               <Link
                 key={i}
@@ -146,10 +165,13 @@ function Footer1() {
             <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
               {/* Logo */}
               <div className="flex items-center justify-center">
-                <img
+                <Image
                   src="/images/dayimZindagi/zindagi.png"
-                  alt="Logo"
-                  className="h-32 w-64 object-contain"
+                  alt="Dayim Zindagi Logo"
+                  width={256} // w-64 → 64*4 = 256px
+                  height={128} // h-32 → 32*4 = 128px
+                  className="object-contain"
+                  priority
                 />
               </div>
 
@@ -195,7 +217,7 @@ function Footer1() {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }

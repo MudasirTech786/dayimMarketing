@@ -17,7 +17,6 @@ function Submenu({ data }) {
           currentPage.includes(data.name.toLowerCase()) && "active"
         }`}
       >
-        {/* ✅ replaced <img> with <Image /> */}
         <Image
           src={data.icon}
           alt={`${data.name} icon`}

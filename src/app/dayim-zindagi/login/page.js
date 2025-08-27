@@ -1,13 +1,24 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 function Login() {
   return (
     <div className='flex items-center justify-center min-h-screen w-full bg-[#1819ab]'>
       <div className='bg-white min-w-[200px] flex flex-col items-center rounded-lg px-14 py-6 
                       sm:min-w-[500px]'>
-        <img src="/images/dayim_logo1.png" className='h-[130px]' />
-        <h3 className='font-bold uppercase'>Login</h3>
+        
+        {/* ✅ Fixed: using Next.js Image */}
+        <Image 
+          src="/images/dayim_logo1.png" 
+          alt="Dayim Logo"
+          width={130}   // matching h-[130px]
+          height={130}
+          className="object-contain"
+          priority
+        />
+        
+        <h3 className='font-bold uppercase mt-2'>Login</h3>
 
         <form className='flex flex-col w-full'>
           <label htmlFor="email" className='text-sm'>Email</label>
@@ -29,7 +40,7 @@ function Login() {
           />
 
           <div className='flex items-center justify-between mt-2'>
-            <div >
+            <div>
               <input type="checkbox" id='remember' />
               <label htmlFor="remember" className='text-sm ml-2'>Remember Me</label>
             </div>
@@ -39,12 +50,16 @@ function Login() {
 
           <button
             className='bg-[#1819ab] w-full text-white rounded-full p-3 uppercase text-sm mt-5'
-          >Login</button>
+          >
+            Login
+          </button>
 
           <div className='mt-3'>
             <p className='text-sm text-center'>
               Don&apos;t have an account? 
-              <Link href="/register" className='ml-2 text-blue-600 underline font-bold'>Create an account</Link>
+              <Link href="/register" className='ml-2 text-blue-600 underline font-bold'>
+                Create an account
+              </Link>
             </p>
           </div>
         </form>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 const DiscoverSection = ({heading, subHeading, link, linkTitle, bgImage, mapLink, bgVideo }) => {
   return (
@@ -26,10 +27,11 @@ const DiscoverSection = ({heading, subHeading, link, linkTitle, bgImage, mapLink
         </div>
         <div className="w-full h-full flex flex-col items-center justify-center">                        
             {bgImage && (
-                <img 
+                <Image 
                     src={bgImage} 
                     alt="" 
-                    className="w-full h-full object-cover object-center " 
+                    fill
+                    className="object-cover object-center" 
                 />                        
             )}
             {bgVideo && (

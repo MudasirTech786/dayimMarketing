@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 function Footer2() {
   const b_t_animation = {
@@ -22,15 +22,14 @@ function Footer2() {
 
   return (
     <motion.div initial="hide" whileInView="show" variants={b_t_animation}>
-      <div
-        className="bg-white grid grid-cols-1 p-10 text-black
-                    md:p-32 md:grid-cols-2 lg:grid-cols-4"
-      >
+      <div className="bg-white grid grid-cols-1 p-10 text-black md:p-32 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <img
+          <Image
             src="/images/dayimMarketing/DayimSlogan.png"
-            alt=""
-            className="h-[150px] "
+            alt="Dayim Slogan"
+            width={200}
+            height={150}
+            className="h-[150px] w-auto"
           />
         </div>
 
@@ -41,10 +40,7 @@ function Footer2() {
           <p className="mt-5 text-lg font-bold">+1(718)715-8208</p>
         </div>
 
-        <div
-          className="flex flex-col 
-                          lg:py-3 lg:pl-32"
-        >
+        <div className="flex flex-col lg:py-3 lg:pl-32">
           <Link href="/about" className=" text-lg font-bold hover:underline">
             About Us
           </Link>
@@ -77,18 +73,13 @@ function Footer2() {
           </Link>
         </div>
 
-        <div
-          className="flex flex-col space-y-5 mt-10
-                          lg:py-3 lg:pl-32 lg:mt-0 "
-        >
+        <div className="flex flex-col space-y-5 mt-10 lg:py-3 lg:pl-32 lg:mt-0">
           <Link
             href="/contact"
             className="mt-5 text-lg font-bold hover:underline"
           >
             Contact Us
           </Link>
-          {/* <Link href="#" className=' text-md hover:underline'>Privacy Policy</Link>            
-            <Link href="#" className=' text-md hover:underline'>Terms & Conditions</Link> */}
         </div>
       </div>
 

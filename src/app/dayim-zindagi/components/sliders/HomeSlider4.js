@@ -5,6 +5,7 @@ import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Image from "next/image";
 
 export default function HomeSlider4() {
   const sliderRef = useRef(null);
@@ -72,27 +73,47 @@ At Dayim Developers, we don’t just build projects — we build trust, lifestyl
                 <p className="whitespace-pre-line">{slide.description}</p>
               </div>
 
-              {/* Image Section with nested slider */}
+              {/* Image Section with grid */}
               <div className="w-full lg:w-1/2 grid grid-cols-3 gap-4">
-                <img
-                  src={slide.images[0]}
-                  alt="main"
-                  className="col-span-2 h-[300px] lg:h-[500px] object-cover rounded-2xl shadow-lg"
-                />
-                <div className="flex flex-col gap-4">
-                  <img
-                    src={slide.images[1]}
-                    alt="small1"
-                    className="h-[140px] lg:h-[240px] object-cover rounded-2xl shadow-lg"
-                  />
-                  <img
-                    src={slide.images[2]}
-                    alt="small2"
-                    className="h-[140px] lg:h-[240px] object-cover rounded-2xl shadow-lg"
+                {/* Large Image */}
+                <div className="relative col-span-2 h-[300px] lg:h-[500px] rounded-2xl shadow-lg overflow-hidden">
+                  <Image
+                    src={slide.images[0]}
+                    alt="main"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw,
+                           (max-width: 1200px) 50vw,
+                           33vw"
                   />
                 </div>
-              </div>
 
+                {/* Small Images */}
+                <div className="flex flex-col gap-4">
+                  <div className="relative h-[140px] lg:h-[240px] rounded-2xl shadow-lg overflow-hidden">
+                    <Image
+                      src={slide.images[1]}
+                      alt="small1"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw,
+                             (max-width: 1200px) 50vw,
+                             33vw"
+                    />
+                  </div>
+                  <div className="relative h-[140px] lg:h-[240px] rounded-2xl shadow-lg overflow-hidden">
+                    <Image
+                      src={slide.images[2]}
+                      alt="small2"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw,
+                             (max-width: 1200px) 50vw,
+                             33vw"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}

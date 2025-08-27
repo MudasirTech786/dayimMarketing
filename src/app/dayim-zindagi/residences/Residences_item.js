@@ -4,6 +4,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -177,9 +178,11 @@ function Residences_item({
       {/* dialogue ends */}
 
       <Zoom>
-        <img
+        <Image
           src={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/uploads/${image}`}
           alt=""
+          width={150}
+          height={200}
           className="h-[200px] w-[150px] object-contain"
         />
       </Zoom>
@@ -200,9 +203,8 @@ function Residences_item({
         ) : (
           <div className="flex items-end justify-between">
             <span
-              className={`text-white text-sm font-bold p-1 rounded-md ${
-                sold === "Reserved" ? "bg-first" : "bg-red"
-              } `}
+              className={`text-white text-sm font-bold p-1 rounded-md ${sold === "Reserved" ? "bg-first" : "bg-red"
+                } `}
             >
               {sold === "Reserved" ? "RESERVED" : "SOLD"}
             </span>

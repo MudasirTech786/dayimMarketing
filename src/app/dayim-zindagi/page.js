@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import React from "react";
+import Image from "next/image";
 
 import Link from "next/link";
 import HomeSlider1 from "./components/sliders/HomeSlider1";
@@ -346,11 +347,14 @@ function Home() {
                 transition={{ duration: 0.6 }}
                 className="rounded-[28px] overflow-hidden relative"
               >
-                <img
+                <Image
                   src="/images/dsa/elevation-side-view_zindagi.JPG"
                   alt="Dayim Zindagi"
+                  width={800}   // ✅ must provide width
+                  height={700}  // ✅ must provide height
                   className="w-full h-[700px] object-cover"
                 />
+
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70"></div>
               </motion.div>
@@ -435,11 +439,14 @@ function Home() {
                 className="relative w-full h-[450px] rounded-2xl overflow-hidden shadow-xl group"
               >
                 {/* Image */}
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
+                  width={600}
+                  height={450}
                   className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 />
+
 
                 {/* Title (always visible, white by default, gold on hover) */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/70 group-hover:opacity-0">
